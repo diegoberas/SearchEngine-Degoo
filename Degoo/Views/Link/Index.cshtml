@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Degoo.Models.Link>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<body>
+    <div class="box">
+        <h1>Degoo</h1>
+        <br />
+        @using (@Html.BeginForm("Search", "Link"))
+        {
+            <input type="text" name="keyword" placeholder="search anything" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            @*@Html.TextBox("keyword");*@
+            <input type="submit"  value="Search" />
+        }
+
+    </div>
+
+
+
+
+</body>
+
+     
+
+
+
+@*<nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>*@
+

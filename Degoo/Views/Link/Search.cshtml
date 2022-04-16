@@ -1,0 +1,65 @@
+﻿@*@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.IPagedList<Degoo.Models.Link>*@
+@model IEnumerable<Degoo.Models.Link>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (!Model.Any())
+{
+    <p><strong>No results found</strong></p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th><strong>Websites</strong></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var link in Model)
+            {
+                <tr>
+                    <td><a class="url-table" href="https://www.@link.Url" style="text-decoration:none">@link.Url</a></td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+@*<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber/Model.PageCount)    
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("Search", new { page = page}))
+</div>*@
+    @*@Html.PagedListPager(Model, page => Url.Action("Search", "Link", new { page, Search = Request.QueryString["Search"] }))*@
+
+    @*<ul class="pagination">
+            @{
+                int numberPage = ViewBag.numberPage;
+                int pageCurrent = ViewBag.pageCurrent;
+                for (int i = 1; i <= numberPage; i++)
+                {
+                    if (i == pageCurrent)
+                    {
+                        <li class="active"><a href="?page=@i">@i</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="?page=@i">@i</a></li>
+                    }
+                }
+
+            }
+        </ul>*@
+
+
+
+}
+
+
