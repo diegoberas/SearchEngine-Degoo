@@ -110,6 +110,7 @@ body {
     transform: translate( -50%, -50% );
 }
 
+
 input {
     position: relative;
     display: inline-block;
@@ -299,9 +300,12 @@ sup {
 
 a {
   color: #00bc8c;
-  text-decoration: underline;
-  font-size: 18px;
+  text-decoration: solid;
+  padding: 10px;
+  font-size: 22px;
 }
+
+
 
 .url-table {
     color: #fff;
@@ -5259,18 +5263,21 @@ fieldset:disabled .btn {
 .pagination {
   display: -ms-flexbox;
   display: flex;
-  padding-left: 0;
+  padding: 10px;
+  margin: 50px;
   list-style: none;
+  
 }
 
 .page-link {
-  position: relative;
-  display: block;
-  color: #fff;
-  text-decoration: none;
-  background-color: #00bc8c;
-  border: 0 solid transparent;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    position: relative;
+    display: block;
+    color: #fff;
+    margin: 50px;
+    text-decoration: none;
+    background-color: #00bc8c;
+    border: 10px solid transparent;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 @media (prefers-reduced-motion: reduce) {

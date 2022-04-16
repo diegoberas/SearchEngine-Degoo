@@ -40,28 +40,34 @@ namespace Degoo.Controllers
             return RedirectToAction("Search", findUrl);
         }
 
+         //GET: Link
+        public ActionResult All(int? page)
+        {
+                var getall = _context.Links.ToList();
+                int pageNumber = page ?? 1;
+                int pageSize = 10;
+            
+                var links = getall.OrderBy(k => k.Id).ToPagedList(pageNumber, pageSize);
 
+                return View(links);
+        }
 
         //GET: Link
-        public ActionResult Search(string keyword, int? page)
+        public ActionResult Search(string keyword)
         {
             var geturls = _context.Links.Where(k => DegooContext.SoundsLike(k.Url) == DegooContext.SoundsLike(keyword)).OrderBy(k => k.Id).ToList();
-            //int pageNumber = page ?? 1;
-            //int pageSize = 3;
-            //var links = geturls.OrderBy(k => k.Id).ToPagedList(pageNumber, pageSize);
-
-
-            //var links = geturls.ToPagedList(page ?? 1, 3);
-
+                
             if (string.IsNullOrEmpty(keyword))
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("All", "Link");
             }
 
             if (geturls == null)
             {
                 return HttpNotFound();
             }
+
+            return View(geturls);
 
             // Pagination
             //if (page > 0)
@@ -72,18 +78,18 @@ namespace Degoo.Controllers
             //{
             //    page = 1; //page default 1
             //}
-            //int limit = 5; //show 5 urls 
+            //int limit = 1; //show 5 urls 
             //int start = (int)(page - 1) * limit;
             //int totalUrl = geturls.Count();
             //ViewBag.totalUrl = totalUrl;
             //ViewBag.pageCurrent = page;
             //int numberPage = (totalUrl / limit);
             //ViewBag.numberPage = numberPage;
-            //var dataUrl = geturls.Where(k => DegooContext.SoundsLike(k.Url) == DegooContext.SoundsLike(keyword)).OrderBy(k => k.Id)
+            //var dataUrl = geturls.OrderBy(k => k.Id)
             //    .Skip(start)
             //    .Take(limit);
 
-            return View(geturls);
+            
         }
     }
 }

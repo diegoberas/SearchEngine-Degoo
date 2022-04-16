@@ -201,6 +201,7 @@
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Link\Index.cshtml" />
     <Content Include="Views\Link\Search.cshtml" />
+    <Content Include="Views\Link\All.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

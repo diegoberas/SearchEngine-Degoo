@@ -1,0 +1,49 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.IPagedList<Degoo.Models.Link>
+
+
+@{
+    ViewBag.Title = "All";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <br />
+    @using (@Html.BeginForm("Search", "Link"))
+    {
+        <input type="text" name="keyword" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        @*@Html.TextBox("keyword");*@
+        <input type="submit" value="Search" />
+    }
+
+</div>
+<br />
+
+<table class="table align-middle">
+    <thead>
+        <tr>
+            <th><strong>Websites</strong></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var link in Model)
+        {
+            <tr>
+                <td><a class="url-table" href="https://www.@link.Url" style="text-decoration:none">@link.Url</a></td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br />
+    Page @(Model.PageCount < Model.PageNumber ? 0: Model.PageNumber) of @Model.PageCount
+    <div>
+        @Html.PagedListPager(Model, page => Url.Action("All", new { page = page }))
+    </div>
+
+
+
